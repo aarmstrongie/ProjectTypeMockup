@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View: Aug 25</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Combined CSS and new color scheme */
+        :root {
+            --bs-blue: #0d6efd;
+            --bs-indigo: #6610f2;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #dc3545;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #ffc107;
+            --bs-green: #198754;
+            --bs-teal: #20c997;
+            --bs-cyan: #17a2b8; /* User requested color */
+            --bs-black: #000;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-primary: var(--bs-cyan); /* Changed primary to cyan */
+            --bs-secondary: #6c757d;
+            --bs-accent-orange: #f46845;
+            --bs-success: #198754;
+            --bs-info: #0dcaf0;
+            --bs-warning: #ffc107;
+            --bs-danger: #dc3545;
+            --bs-light: #f8f9fa;
+            --bs-dark: #212529;
+            --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --bs-body-font-family: var(--bs-font-sans-serif);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            background-color: #fff;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Custom Styles & Overrides */
+        .container {
+            max-width: 1140px;
+        }
+        .main-content {
+            padding-top: 100px;
+            padding-bottom: 100px; /* Add padding to prevent overlap with bottom nav */
+        }
+        .index-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+        .status-field {
+            width: 110px;
+            text-align: center;
+        }
+        .padding-top_5x { padding-top: 5px; }
+        .margin-vert-1_75x { margin-top: 1.75rem; margin-bottom: 1.75rem; }
+        .padding-horz-1x { padding-left: 1rem; padding-right: 1rem; }
+        .padding-vert-2x { padding-top: 2rem; padding-bottom: 2rem; }
+        .padding-right_5x { padding-right: 5px; }
+        .text-muted-color { color: #6c757d !important; }
+
+        /* Color Scheme & Tab Update */
+        .btn-primary {
+            color: #fff;
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .btn-primary:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .nav-tabs {
+            border-bottom: 1px solid #dee2e6;
+        }
+        .nav-tabs .nav-link {
+             color: var(--bs-primary); /* Cyan text for all tabs */
+             border: 1px solid transparent;
+             margin-bottom: -1px;
+        }
+        .nav-tabs .nav-link:hover {
+            border-color: transparent;
+        }
+        .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+            color: var(--bs-primary);
+            background-color: rgba(23, 162, 184, 0.1); /* Translucent cyan */
+            border-color: #dee2e6 #dee2e6 #fff;
+            border-radius: .25rem .25rem 0 0;
+        }
+        
+        a {
+            color: var(--bs-primary);
+        }
+        a:hover {
+            color: #117a8b;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+            z-index: 1000;
+        }
+        .bottom-nav .container {
+            padding: 0 15px;
+        }
+        .btn-grey {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #ced4da;
+        }
+        .groups-box {
+            border: 1px solid #ced4da;
+            background-color: #e9ecef;
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.25rem;
+            min-height: calc(1.5em + 0.75rem + 2px);
+        }
+        .group-tag {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            background-color: #6c757d;
+            color: #fff;
+            margin-right: 5px;
+        }
+        .group-tag .close {
+            color: #fff;
+            opacity: 0.7;
+            text-shadow: none;
+        }
+        .edit-info {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: right;
+        }
+        .table thead th {
+             background-color: var(--bs-primary);
+             color: white;
+        }
+        
+        .btn-custom-secondary {
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 20px;
+            padding: 0.375rem 1rem;
+        }
+        .btn-custom-secondary:hover {
+            background-color: #5a6268;
+            color: #fff;
+        }
+        .historical-row {
+            background-color: #f8f9fa; 
+            color: #6c757d;
+        }
+        .historical-row a {
+            color: #6c757d;
+        }
+        
+        /* New Filter Styles */
+        .status-filter.btn-group .btn {
+            color: #fff;
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .status-filter.btn-group .btn.active {
+            background-color: var(--bs-accent-orange);
+            border-color: var(--bs-accent-orange);
+        }
+        .status-filter.btn-group > .btn:first-child {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        .status-filter.btn-group > .btn:last-child {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        /* Icon styles */
+        .table-icon {
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .icon-sync {
+            color: var(--bs-primary);
+        }
+        .icon-warning {
+            color: var(--bs-accent-orange);
+        }
+        .row-warning-highlight {
+            background-color: rgba(23, 162, 184, 0.1); /* Light translucent cyan */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="index-bar" id="index-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>View: Aug 25</h2>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <div class="mr-3">
+                            <label for="Status" class="d-block mb-0 small">Status</label>
+                            <input type="text" value="Published" class="form-control status-field" disabled>
+                        </div>
+                        <div>
+                            <label for="View_Version" class="d-block mb-0 small">View Version</label>
+                            <select id="version_select" class="form-control">
+                                <option value="">Select a version</option>
+                                <option value="3392">Aug 25 - v7 - never_used</option>
+                                <option value="3391">Aug 25 - v6 - inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container main-content" id="main-content">
+      <form class="edit_product_type" id="edit_product_type_3393" action="#" method="post">
+          <fieldset disabled>
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="product_type_name">Name</label>
+                    <input class="form-control" type="text" value="Aug 25" id="product_type_name">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <label for="product_type_version">Version</label>
+                  <input class="form-control" type="text" value="8" id="product_type_version">
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="product_type_product_category_id">Category</label>
+                    <select class="form-control" id="product_type_product_category_id">
+                      <option selected>Regression documents</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="product_type_description">Description</label>
+              <textarea class="form-control" id="product_type_description"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product_type_module_type">Module type</label>
+                  <select class="form-control" id="product_type_module_type">
+                    <option selected>Project</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="product_type_category_type">Category type</label>
+                  <input class="form-control" type="text" value="Customer" id="product_type_category_type">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="product_type_group_ids">Groups</label>
+                <div class="groups-box">
+                    <span class="group-tag">AAAAAAAAA <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></span>
+                    <span class="group-tag">AAtestGroup <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></span>
+                </div>
+            </div>
+             <div class="row">
+                <div class="form-group col-sm-6 ml-auto">
+                  <textarea class="form-control" rows="3" disabled>12/08/2025 11:01AM EDT: AA BLUE LIVE ADMIN made a Test Reason 5 change to version # 8. Reason was test.</textarea>
+                </div>
+            </div>
+          </fieldset>
+            
+          <hr class="margin-vert-1_75x">
+          
+          <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link" id="product-names-tab" data-toggle="tab" href="#product-names" role="tab">Product Name</a></li>
+              <li class="nav-item"><a class="nav-link" id="screens-tab" data-toggle="tab" href="#screens" role="tab">Screens</a></li>
+              <li class="nav-item"><a class="nav-link" id="forms-tab" data-toggle="tab" href="#forms" role="tab">Forms</a></li>
+              <li class="nav-item"><a class="nav-link" id="components-tab" data-toggle="tab" href="#components" role="tab">Expense Types</a></li>
+              <li class="nav-item"><a class="nav-link" id="segments-tab" data-toggle="tab" href="#segments" role="tab">Segments</a></li>
+              <li class="nav-item"><a class="nav-link" id="advance-tab" data-toggle="tab" href="#advance" role="tab">Advanced Features</a></li>
+              <li class="nav-item"><a class="nav-link" id="event-titles-tab" data-toggle="tab" href="#event-titles" role="tab">Event Titles</a></li>
+              <li class="nav-item"><a class="nav-link" id="team-tab" data-toggle="tab" href="#team" role="tab">Team</a></li>
+              <li class="nav-item"><a class="nav-link active" id="process-templates-tab" data-toggle="tab" href="#process-templates" role="tab">Standard Process Templates</a></li>
+              <li class="nav-item"><a class="nav-link" id="micro-models-tab" data-toggle="tab" href="#micro-models" role="tab">Associated Micro Models</a></li>
+              <li class="nav-item"><a class="nav-link" id="product-description-verbiage-tab" data-toggle="tab" href="#product-description-verbiage" role="tab">Product Description Verbiage</a></li>
+              <li class="nav-item"><a class="nav-link" id="timesheet-data-tab" data-toggle="tab" href="#timesheet-data" role="tab">Timesheet Data</a></li>
+              <li class="nav-item"><a class="nav-link" id="general-tab" data-toggle="tab" href="#general" role="tab">General</a></li>
+              <li class="nav-item"><a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab">Projects</a></li>
+              <li class="nav-item"><a class="nav-link" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab">Timeline</a></li>
+          </ul>
+
+          <div class="tab-content border border-top-0 p-3">
+              <div class="tab-pane fade" id="product-names" role="tabpanel">
+                <fieldset disabled>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5>Associated Product Names</h5>
+                    <a class="btn btn-grey" href="#"><i class="fas fa-plus pr-1"></i>Select Product Name</a>
+                  </div>
+                  <table class="table table-striped">
+                    <thead><tr><th>Name</th><th>Description</th><th>State</th></tr></thead>
+                    <tbody><tr><td><a href="#">Ultimate Product name</a></td><td>A brief description of the ultimate product.</td><td>Pending</td></tr></tbody>
+                  </table>
+                </fieldset>
+              </div>
+              <div class="tab-pane fade" id="screens" role="tabpanel"><p>Screens content goes here.</p></div>
+              <div class="tab-pane fade" id="forms" role="tabpanel"><p>Forms content goes here.</p></div>
+              <div class="tab-pane fade" id="components" role="tabpanel">
+                <fieldset disabled>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5>Associated Expense Types</h5>
+                    <a class="btn btn-grey" href="#"><i class="fas fa-plus pr-1"></i>Select Expense Types</a>
+                  </div>
+                  <p class="text-muted"><i>No Associated Expense Types Yet!</i></p>
+                </fieldset>
+              </div>
+              <div class="tab-pane fade" id="segments" role="tabpanel"><p>Segments content goes here.</p></div>
+              <div class="tab-pane fade" id="advance" role="tabpanel"><p>Advanced Features content goes here.</p></div>
+              <div class="tab-pane fade" id="event-titles" role="tabpanel"><p>Event Titles content goes here.</p></div>
+              <div class="tab-pane fade" id="team" role="tabpanel"><p>Team content goes here.</p></div>
+              <div class="tab-pane fade show active" id="process-templates" role="tabpanel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5>Associated Process Templates</h5>
+                    <a class="btn btn-primary" href="#"><i class="fas fa-plus pr-1"></i>Create New Process Template</a>
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Project Type Version</th>
+                      <th>State</th>
+                      <th>Last Modified</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr><td><a href="#">Copy of Copy of The ultimate process - v1.01</a> <i class="fas fa-sync-alt table-icon icon-sync"></i></td><td>14</td><td>Draft</td><td>09/04/2025 08:05AM</td></tr>
+                      <tr class="row-warning-highlight"><td><a href="#">Copy of Copy of TT2157 - v1.00</a><i class="fas fa-exclamation-triangle table-icon icon-warning-filled"></i></td><td>14</td><td>Draft</td><td>09/04/2025 12:29PM</td></tr>
+                      <tr><td><a href="#">The ultimate process - v1.03</a><i class="fas fa-exclamation-triangle table-icon icon-warning-outline"></i></td><td>14</td><td>Published</td><td>09/04/2025 08:05AM</td></tr>
+                      <tr><td><a href="#">This is a test - v1.01</a></td><td>14</td><td>Submitted</td><td>09/04/2025 08:05AM</td></tr>
+                      <tr><td><a href="#">TT2157 - v1.03</a></td><td>14</td><td>Published</td><td>09/04/2025 08:05AM</td></tr>
+                  </tbody>
+                </table>
+              </div>
+               <div class="tab-pane fade" id="micro-models" role="tabpanel">
+                 <div class="row mb-3 align-items-center">
+                    <div class="col-md-6">
+                        <h5>Associated Micro Models</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="search" id="micro-models-search" class="form-control" placeholder="Search...">
+                    </div>
+                 </div>
+                 <div class="row align-items-center mb-3">
+                    <div class="col-md-6">
+                        <div class="btn-group status-filter" id="status-filter-group">
+                            <button type="button" class="btn active" data-filter="active">Active</button>
+                            <button type="button" class="btn" data-filter="inactive">Inactive</button>
+                            <button type="button" class="btn" data-filter="all">All</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-md-right">
+                        <button type="button" class="btn btn-custom-secondary" id="toggle-historical-btn">
+                            <i class="fas fa-filter mr-1"></i> Show Historical Associations
+                        </button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Version</th>
+                      <th>State</th>
+                      <th>Purpose</th>
+                      <th>Associated Process Template</th>
+                    </tr>
+                  </thead>
+                  <tbody id="micro-models-table-body">
+                    <tr data-status="draft">
+                      <td><a href="#">Copy of The ultimate process - v1.01</a></td>
+                      <td>14</td>
+                      <td>Draft</td>
+                      <td>Initial client intake and data validation.</td>
+                      <td><a href="#">Standard Client Onboarding</a></td>
+                    </tr>
+                     <tr data-status="published">
+                      <td><a href="#">The ultimate process - v1.03</a> <i class="fas fa-exclamation-triangle table-icon icon-warning-outline"></i></td>
+                      <td>14</td>
+                      <td>Published</td>
+                      <td>Final project sign-off and delivery.</td>
+                      <td><a href="#">Standard Client Onboarding</a></td>
+                    </tr>
+                    <tr data-status="draft" class="row-warning-highlight">
+                      <td><a href="#">Old Marketing Campaign Model</a> <i class="fas fa-exclamation-triangle table-icon icon-warning-filled"></i></td>
+                      <td>11</td>
+                      <td>Draft</td>
+                      <td>Legacy marketing automation.</td>
+                      <td><a href="#">Old Marketing Process</a></td>
+                    </tr>
+                     <tr data-status="submitted">
+                      <td><a href="#">This is a test - v1.01</a></td>
+                      <td>14</td>
+                      <td>Submitted</td>
+                      <td>For internal QA and regression testing.</td>
+                      <td><a href="#">Internal Project Kickoff</a></td>
+                    </tr>
+                     <tr data-status="approved">
+                      <td><a href="#">TT2157 - v1.03</a> <i class="fas fa-sync-alt table-icon icon-sync"></i></td>
+                      <td>14</td>
+                      <td>Approved</td>
+                      <td>Ticket tracking and resolution model.</td>
+                      <td><a href="#">Internal Project Kickoff</a></td>
+                    </tr>
+                     <tr data-status="requested_changes">
+                      <td><a href="#">Client Feedback Model - v2.0</a></td>
+                      <td>14</td>
+                      <td>Requested Changes</td>
+                      <td>Incorporate client feedback from Q3.</td>
+                      <td><a href="#">Quarterly Review Process</a></td>
+                    </tr>
+                    <tr class="historical-row" data-status="historical" style="display: none;">
+                      <td><a href="#">Archived Process v1.0</a></td>
+                      <td>12</td>
+                      <td>Archived</td>
+                      <td>Legacy data migration.</td>
+                      <td><a href="#">Old Onboarding Process</a></td>
+                    </tr>
+                    <tr class="historical-row" data-status="historical" style="display: none;">
+                      <td><a href="#">Deprecated Model v2.1</a></td>
+                      <td>11</td>
+                      <td>Archived</td>
+                      <td>Superseded by a newer model.</td>
+                      <td><a href="#">Legacy Review Process</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="tab-pane fade" id="product-description-verbiage" role="tabpanel"><p>Product Description Verbiage content goes here.</p></div>
+              <div class="tab-pane fade" id="timesheet-data" role="tabpanel"><p>Timesheet Data content goes here.</p></div>
+              <div class="tab-pane fade" id="general" role="tabpanel"><p>General content goes here.</p></div>
+              <div class="tab-pane fade" id="projects" role="tabpanel"><p>Projects content goes here.</p></div>
+              <div class="tab-pane fade" id="timeline" role="tabpanel"><p>Timeline content goes here.</p></div>
+          </div>
+          
+          <div class="row mt-4 align-items-end">
+              <div class="col-6">
+                  <h5>Aug 25</h5>
+              </div>
+              <div class="col-6 edit-info">
+                  ID: 3393<br>
+                  Created 12/08/2025 11:01AM EDT AA BLUE LIVE ADMIN<br>
+                  Updated 04/09/2025 09:40AM EDT AA BLUE LIVE ADMIN
+              </div>
+          </div>
+
+          <div class="bottom-nav" id="bottom-nav">
+            <div class="container d-flex justify-content-between align-items-center">
+              <div>
+                <button type="button" class="btn btn-primary">Edit</button>
+              </div>
+              <div>
+                <button type="button" class="btn btn-danger">Deactivate</button>
+                <a class="btn btn-grey" href="#">
+                  <i class="fas fa-undo-alt pr-1"></i>
+                  Back to Product Matrix Summary
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusFilterGroup = document.getElementById('status-filter-group');
+            const historicalBtn = document.getElementById('toggle-historical-btn');
+            const searchInput = document.getElementById('micro-models-search');
+            const tableBody = document.getElementById('micro-models-table-body');
+            const rows = Array.from(tableBody.getElementsByTagName('tr'));
+
+            let currentStatusFilter = 'active';
+            let showHistorical = false;
+            let searchQuery = '';
+            
+            // Define active and inactive states
+            const activeStates = ['published', 'submitted', 'approved', 'requested_changes'];
+            const inactiveStates = ['draft'];
+
+            function updateTableVisibility() {
+                for (let row of rows) {
+                    const isHistorical = row.classList.contains('historical-row');
+                    const status = row.getAttribute('data-status');
+                    const rowText = row.textContent.toLowerCase();
+                    const searchMatch = rowText.includes(searchQuery);
+
+                    let shouldShow = false;
+
+                    if (showHistorical) {
+                        // If historical is active, only show historical rows that match search
+                        if (isHistorical && searchMatch) {
+                            shouldShow = true;
+                        }
+                    } else {
+                        // If historical is not active, filter by status and search
+                        let statusMatch = false;
+                        if (currentStatusFilter === 'all') {
+                            statusMatch = !isHistorical;
+                        } else if (currentStatusFilter === 'active') {
+                            statusMatch = activeStates.includes(status);
+                        } else if (currentStatusFilter === 'inactive') {
+                            statusMatch = inactiveStates.includes(status);
+                        }
+                        
+                        if (statusMatch && searchMatch) {
+                            shouldShow = true;
+                        }
+                    }
+                    
+                    row.style.display = shouldShow ? '' : 'none';
+                }
+            }
+
+            statusFilterGroup.addEventListener('click', function (e) {
+                if (e.target.tagName === 'BUTTON') {
+                    if (statusFilterGroup.querySelector('.active')) {
+                        statusFilterGroup.querySelector('.active').classList.remove('active');
+                    }
+                    e.target.classList.add('active');
+                    currentStatusFilter = e.target.getAttribute('data-filter');
+                    
+                    if (showHistorical) {
+                        showHistorical = false;
+                        historicalBtn.innerHTML = '<i class="fas fa-filter mr-1"></i> Show Historical Associations';
+                        historicalBtn.classList.remove('active');
+                    }
+
+                    updateTableVisibility();
+                }
+            });
+
+            historicalBtn.addEventListener('click', function () {
+                showHistorical = !showHistorical;
+                this.classList.toggle('active');
+
+                if (showHistorical) {
+                    this.innerHTML = '<i class="fas fa-filter mr-1"></i> Hide Historical Associations';
+                    if (statusFilterGroup.querySelector('.active')) {
+                       statusFilterGroup.querySelector('.active').classList.remove('active');
+                    }
+                } else {
+                    this.innerHTML = '<i class="fas fa-filter mr-1"></i> Show Historical Associations';
+                    if (!statusFilterGroup.querySelector('.active')) {
+                        const defaultFilter = statusFilterGroup.querySelector('[data-filter="active"]');
+                        if(defaultFilter) defaultFilter.classList.add('active');
+                        currentStatusFilter = 'active';
+                    }
+                }
+                updateTableVisibility();
+            });
+            
+            searchInput.addEventListener('input', function(e) {
+                searchQuery = e.target.value.toLowerCase();
+                updateTableVisibility();
+            });
+
+            // Initial table setup
+            updateTableVisibility();
+        });
+    </script>
+</body>
+</html>
