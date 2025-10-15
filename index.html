@@ -130,8 +130,8 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #f8f9fa;
-            padding: 10px 0;
+            background-color: #fff;
+            padding: 15px 0;
             border-top: 1px solid #dee2e6;
             z-index: 1000;
         }
@@ -143,6 +143,17 @@
             background-color: #e9ecef;
             border-color: #ced4da;
         }
+        .btn-grey:hover {
+            background-color: #d3d9df;
+            border-color: #b9c1ca;
+        }
+        /* New bottom nav button styles */
+        .bottom-nav .btn {
+            border-radius: 20px;
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+        }
+        
         .groups-box {
             border: 1px solid #ced4da;
             background-color: #e9ecef;
@@ -528,13 +539,12 @@
           <div class="bottom-nav" id="bottom-nav">
             <div class="container d-flex justify-content-between align-items-center">
               <div>
-                <button type="button" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-grey">Edit</button>
               </div>
               <div>
-                <button type="button" class="btn btn-danger">Deactivate</button>
+                <button type="button" class="btn btn-danger mr-2">Deactivate</button>
                 <a class="btn btn-grey" href="#">
-                  <i class="fas fa-undo-alt pr-1"></i>
-                  Back to Product Matrix Summary
+                  Back to Project Type
                 </a>
               </div>
             </div>
